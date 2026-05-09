@@ -21,6 +21,8 @@ func main() {
 	r.Use(middleware.Recoverer)
 	r.Route("/api", func(r chi.Router) {
 		r.Get("/sensors", handlers.SensorsHandler)
+		r.Get("/fans", handlers.GetFansHandler)
+		r.Put("/fans/speed", handlers.SetFanSpeedHandler)
 	})
 
 	slog.Info("Server listening on port", "port", port)
